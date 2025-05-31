@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy } from '@angular/core';
 import { MenuService } from '../menu/menu.service';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import Lenis from 'lenis';
 
 @Component({
   selector: 'app-main',
@@ -7,14 +10,27 @@ import { MenuService } from '../menu/menu.service';
   templateUrl: './main.html',
   styleUrl: './main.css'
 })
-export class Main {
-  menuService: MenuService;
+export class Main implements AfterViewInit, OnDestroy {
+  private lenis!: Lenis;
+  private animation!: GSAPTimeline;
 
-  constructor(menuService: MenuService) {
-    this.menuService = menuService;
+  constructor(public menuService: MenuService) {
+    gsap.registerPlugin(ScrollTrigger);
   }
 
-  toggleMenu() {
-    return this.menuService.toggleMenu();
+  ngAfterViewInit(): void {
+
+  }
+
+  ngOnDestroy(): void {
+
+  }
+
+  private initSmoothScroll(): void {
+
+  }
+
+  private setupHeroAnimation(): void {
+
   }
 }

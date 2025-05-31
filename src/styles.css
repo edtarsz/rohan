@@ -54,6 +54,7 @@ body {
 }
 
 a {
+    align-self: center;
     text-decoration: none;
     color: inherit;
 }

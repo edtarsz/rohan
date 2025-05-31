@@ -54,3 +54,19 @@ h1 {
 .language-list {
     font-family: var(--ubuntu-bold);
 }
+
+.character-list li {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform: scale(1);
+}
+
+.character-list:hover li {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+.character-list li:hover {
+    transform: scale(1.15);
+    opacity: 1;
+    z-index: 1;
+}

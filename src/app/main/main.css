@@ -27,7 +27,7 @@ h1::after {
     background-repeat: no-repeat;
     background-position: center;
 
-    width: clamp(30rem, 38vw, 65rem);
+    width: clamp(30rem, 40vw, 65rem);
     height: auto;
     aspect-ratio: 1/1;
 
