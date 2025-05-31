@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: rgb(31, 29, 32);
+    --secondary-color: #841B1B;
+
+    --red-text-color: #C0192B;
+
+    --main-font: 'ResidentEvil';
+    --helvetica-bold: 'HelveticaNeueBold';
+    --ubuntu-bold: 'UbuntuBold';
+    --ubuntu-regular: 'UbuntuRegular';
+}
+
+body {
+    background-image: linear-gradient(rgba(31, 29, 32, 0.8),
+            rgba(31, 29, 32, 0.8)), url('/assets/img/bg-main.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@font-face {
+    font-family: 'ResidentEvil';
+    src: url('/assets/fonts/resident_evil_film.woff2') format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('/assets/fonts/HelveticaUltraCompressed.woff2') format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'HelveticaNeueBold';
+    src: url('/assets/fonts/HelveticaUltraCompressed.woff2') format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'UbuntuBold';
+    src: url('/assets/fonts/Ubuntu-Bold.woff2') format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'UbuntuRegular';
+    src: url('/assets/fonts/Ubuntu-Regular.woff2') format('woff2');
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: normal;
+}

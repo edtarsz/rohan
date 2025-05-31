@@ -1,0 +1,55 @@
+.menu-header {
+    position: absolute;
+    right: 0;
+
+    height: 100vh;
+    width: 55%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    padding: 5rem 5rem;
+
+    color: white;
+    background-color: var(--secondary-color);
+}
+
+.left {
+    position: absolute;
+
+    height: 100vh;
+    width: 45%;
+
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: normal;
+    font-size: 10rem;
+    font-family: var(--main-font);
+
+    background-color: rgba(31, 29, 32, 0.8);
+}
+
+.first-letter {
+    color: var(--red-text-color);
+}
+
+h1 {
+    color: white;
+}
+
+.character-list {
+    font-size: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    font-family: var(--main-font);
+}
+
+.language-list {
+    font-family: var(--ubuntu-bold);
+}

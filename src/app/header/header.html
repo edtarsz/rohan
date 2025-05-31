@@ -1,0 +1,23 @@
+<header class="main-header" role="banner">
+    <a href="/" class="logo">RAMOSZ</a>
+    <div class="menu-header" [class.active]="menuService.isMenuVisible">
+        @if (menuService.isMenuVisible) {
+        <ul class="menu-list">
+            <li><a href="#/home">STORY</a></li>
+            <li><a href="#/about">CHARACTERS</a></li>
+            <li><a href="#/contact">WEAPONS</a></li>
+            <li><a href="#/services">BOSSES</a></li>
+        </ul>
+        }
+        <button class="menu-button" (click)="toggleMenu()">
+            @if (menuService.isMenuVisible) {
+            <img src="/assets/svg/exit.svg" width="50" height="50" class="menu-icon">
+            } @else {
+            <img src="/assets/svg/menu.svg" width="40" height="40" class="menu-icon">
+            }
+        </button>
+    </div>
+</header>
+@if (menuService.isMenuVisible) {
+<app-menu />
+}

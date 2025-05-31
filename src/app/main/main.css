@@ -1,0 +1,66 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    height: 100vh;
+    width: 100%;
+    padding-bottom: 350px;
+}
+
+h1 {
+    font-family: var(--main-font);
+    font-size: clamp(4rem, 15vw, 15rem);
+
+    color: white;
+    text-align: center;
+}
+
+h1::after {
+    content: "";
+    display: block;
+
+    background-image: url('/assets/img/main-hero.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: clamp(30rem, 38vw, 65rem);
+    height: auto;
+    aspect-ratio: 1/1;
+
+    position: absolute;
+    bottom: 0;
+    left: 45%;
+    transform: translateX(-45%);
+}
+
+.first-letter {
+    color: var(--secondary-color);
+}
+
+.container-arrow {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container-arrow img {
+    margin: auto;
+    width: 2rem;
+}
+
+.container-arrow p {
+    color: transparent;
+    -webkit-text-stroke: 0.5px white;
+    font-size: 4rem;
+    text-align: center;
+    font-family: var(--helvetica-bold);
+}

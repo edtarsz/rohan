@@ -1,0 +1,42 @@
+.main-header {
+    font-family: var(--helvetica-bold);
+    color: white;
+
+    justify-content: space-between;
+    position: fixed;
+    display: flex;
+    margin: auto;
+
+    left: 0;
+    top: 0;
+    font-size: 2rem;
+    width: 100%;
+    padding: 5rem 5rem;
+
+    z-index: 2;
+}
+
+.menu-header {
+    padding-left: 5rem;
+    justify-content: space-between;
+    display: flex;
+}
+
+/* Estilo específico cuando cierta condición se cumple */
+.menu-header.active {
+    width: 55%;
+}
+
+.menu-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-list {
+    align-items: center;
+    gap: 4rem;
+    display: flex;
+    font-size: 1.5rem;
+    font-family: var(--helvetica-bold);
+}
