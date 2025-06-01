@@ -1,44 +1,35 @@
-main {
+.main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-
+    position: fixed;
     height: 100vh;
     width: 100%;
     padding-bottom: 350px;
+    will-change: transform;
 }
 
 h1 {
     font-family: var(--main-font);
     font-size: clamp(4rem, 15vw, 15rem);
-
     color: white;
     text-align: center;
 }
 
-h1::after {
-    content: "";
-    display: block;
-
-    background-image: url('/assets/img/main-hero.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    width: clamp(30rem, 40vw, 65rem);
-    height: auto;
-    aspect-ratio: 1/1;
-
-    position: absolute;
-    bottom: 0;
-    left: 45%;
-    transform: translateX(-45%);
-}
-
 .first-letter {
     color: var(--secondary-color);
+}
+
+.container-hero {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: clamp(30rem, 35vw, 75rem);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .container-arrow {
@@ -46,8 +37,7 @@ h1::after {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    bottom: 20px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -63,4 +53,29 @@ h1::after {
     font-size: 4rem;
     text-align: center;
     font-family: var(--helvetica-bold);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    top: 100vh;
+    background-color: var(--secondary-color);
+    z-index: -1;
+    position: relative;
+    transform: translate3d(-100vw, 0, 0);
+    will-change: transform;
+}
+
+.container img {
+    width: 50%;
+    z-index: 1;
+}
+
+.bottom {
+    position: relative;
+    top: 100vh;
+    height: 100vh;
+    background-color: white;
 }

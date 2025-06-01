@@ -1,13 +1,24 @@
 <main>
-    @if (!menuService.isMenuVisible) {
-    <h1>
-        <span class="first-letter">R</span>ESIDENT
-        <span class="first-letter">E</span>VIL
-        4
-    </h1>
-    <div class="container-arrow">
-        <p>TRAILER</p>
-        <img src="/assets/svg/down-arrow.svg" alt="">
+    <div class="main-content">
+        @if (!menuService.isMenuVisible) {
+        <h1>
+            <span class="first-letter">R</span>ESIDENT
+            <span class="first-letter">E</span>VIL
+            4
+        </h1>
+        <div class="container-hero">
+            <img src="/assets/img/main-hero.png" draggable="false" alt="" loading="lazy">
+        </div>
+        <div class="container-arrow">
+            <p>TRAILER</p>
+            <img src="/assets/svg/down-arrow.svg" draggable="false" alt="" loading="lazy">
+        </div>
+        }
     </div>
-    }
+    <div class="container">
+        <img src="/assets/img/re4.svg" draggable="false" alt="" loading="lazy">
+    </div>
+    <div class="bottom">
+
+    </div>
 </main>

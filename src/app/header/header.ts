@@ -13,7 +13,7 @@ export class Header {
 
   constructor(menuService: MenuService) {
     this.menuService = menuService;
-   }
+  }
 
   toggleMenu() {
     return this.menuService.toggleMenu();
