@@ -24,16 +24,16 @@
 }
 
 #container-arrow {
-    width: auto;
+    width: 25%;
     height: 10rem;
     bottom: 0;
+    text-align: center;
 }
 
 #container-arrow img {
+    position: relative;
     width: 3rem;
     height: auto;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 #container-arrow p {
@@ -63,7 +63,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     object-position: center;
-    background-size: 100% auto; 
+    background-size: 100% auto;
     object-fit: contain;
 
     scale: 1.3;
