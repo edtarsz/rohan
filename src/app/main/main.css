@@ -1,19 +1,18 @@
 .background {
     position: fixed;
-    width: 110%;
-    height: 110%;
-    bottom: 0;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) scale(1.3);
     overflow: hidden;
     left: 50%;
     transform: translateX(-50%);
 }
 
-#main-background {}
-
-#resident {}
-
-#main-hero {}
+/*
+    #main-background {}
+    #resident {}
+    #main-hero {} 
+*/
 
 .background img {
     scale: 1.3;
@@ -24,26 +23,20 @@
     object-fit: cover;
 }
 
-.first-letter {
-    color: var(--secondary-color);
+#container-arrow {
+    width: auto;
+    height: 10rem;
+    bottom: 0;
 }
 
-.container-arrow {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    bottom: 0;
+#container-arrow img {
+    width: 3rem;
+    height: auto;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.container-arrow img {
-    margin: auto;
-    width: 2rem;
-}
-
-.container-arrow p {
+#container-arrow p {
     color: transparent;
     -webkit-text-stroke: 0.5px white;
     font-size: 4rem;
@@ -62,15 +55,16 @@
 }
 
 .container h1 {
+    text-align: center;
     color: white;
     font-family: var(--main-font);
     font-size: 35vw;
     background-image: url('/assets/img/full-background.svg');
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    object-position: top;
-    background-size: cover;
-    object-fit: cover;
+    object-position: center;
+    background-size: 100% auto; 
+    object-fit: contain;
 
     scale: 1.3;
 }

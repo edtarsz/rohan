@@ -52,30 +52,28 @@ export class Main implements AfterViewInit {
 
     gsap.to('#resident', {
       scrollTrigger: {
-        trigger: 'main',
+        trigger: '#resident',
         start: 'top top',
-        end: '+=200',
-        scrub: 2,
+        end: '+=350',
+        scrub: true,
         markers: false,
       },
-      scale: 0.5,
+      scale: 0.8,
       opacity: 0,
-      ease: 'power2.inOut'
+      ease: 'power1.inOut'
     });
 
-    gsap.to('.container-arrow', {
+    gsap.to('#container-arrow', {
       scrollTrigger: {
-        trigger: 'main',
+        trigger: '#resident',
         start: 'top top',
-        end: '+=200',
-        scrub: 2,
+        end: '+=350',
+        scrub: true,
         markers: false,
       },
-      scale: 0.5,
+      scale: 0.8,
       opacity: 0,
       ease: 'power2.inOut'
     });
-
-
   }
 }
