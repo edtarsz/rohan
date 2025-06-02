@@ -27,7 +27,18 @@ export class Main implements AfterViewInit {
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.to('.main-content', {
+    gsap.to('.background img', {
+      scrollTrigger: {
+        trigger: 'main',
+        start: 'top-=300 top',
+        end: '+=1300',
+        scrub: 2,
+      },
+      scale: 1,
+      ease: 'power2.inOut'
+    });
+
+    gsap.to('.container-hero', {
       scrollTrigger: {
         trigger: 'main',
         start: 'top-=400 top',
