@@ -32,7 +32,7 @@ export class Main implements AfterViewInit {
         trigger: 'main',
         start: 'top-=300 top',
         end: '+=1300',
-        scrub: 2,
+        scrub: true,
       },
       scale: 1,
       ease: 'power2.inOut'
@@ -43,7 +43,7 @@ export class Main implements AfterViewInit {
         trigger: 'main',
         start: 'top-=400 top',
         end: '+=2000',
-        scrub: 2,
+        scrub: true,
         markers: false,
       },
       scale: 0.5,
