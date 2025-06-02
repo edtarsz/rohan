@@ -27,7 +27,7 @@ export class Main implements AfterViewInit {
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.to('.background img', {
+    gsap.to('#main-background img', {
       scrollTrigger: {
         trigger: 'main',
         start: 'top-=300 top',
@@ -38,7 +38,7 @@ export class Main implements AfterViewInit {
       ease: 'power2.inOut'
     });
 
-    gsap.to('.container-hero', {
+    gsap.to('#main-hero', {
       scrollTrigger: {
         trigger: 'main',
         start: 'top-=400 top',
@@ -50,7 +50,7 @@ export class Main implements AfterViewInit {
       ease: 'power2.inOut'
     });
 
-    gsap.to('h1', {
+    gsap.to('#resident', {
       scrollTrigger: {
         trigger: 'main',
         start: 'top top',
@@ -76,16 +76,6 @@ export class Main implements AfterViewInit {
       ease: 'power2.inOut'
     });
 
-    gsap.to('.container', {
-      scrollTrigger: {
-        trigger: '.container',
-        start: 'top center',
-        end: '+=200',
-        scrub: 1.5,
-        markers: false,
-      },
-      translateX: '0vw',
-      ease: 'power2.out'
-    });
+
   }
 }
