@@ -13,20 +13,23 @@ export class Main implements AfterViewInit, OnDestroy {
   private lenis: Lenis | null = null;
   private scrollTriggers: ScrollTrigger[] = [];
   private menuSubscription: any;
+  private tickerCallback: any;
 
-  constructor(public menuService: MenuService) { }
+  constructor(public menuService: MenuService) {
+    this.tickerCallback = (time: number) => {
+      this.lenis?.raf(time * 1000);
+    };
+  }
 
   ngAfterViewInit(): void {
     this.initAnimations();
 
-    // Escuchar cambios en el menú
     this.menuSubscription = this.menuService.isMenuVisible$.subscribe(visible => {
-      if (!visible) {
-        // Reiniciar animaciones cuando se cierra el menú
-        setTimeout(() => this.refreshAnimations(), 100);
+      if (visible) {
+        this.pauseAnimations();
       } else {
-        // Detener animaciones cuando se abre el menú
-        this.destroyAnimations();
+        this.resumeAnimations();
+        setTimeout(() => this.refreshScroll(), 100);
       }
     });
   }
@@ -41,27 +44,21 @@ export class Main implements AfterViewInit, OnDestroy {
   private initAnimations(): void {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Inicializar Lenis para scroll suave
     this.lenis = new Lenis({
-      autoRaf: true,
+      autoRaf: false,
       smoothWheel: true,
     });
 
     this.lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((time) => {
-      this.lenis?.raf(time * 1000);
-    });
+    gsap.ticker.add(this.tickerCallback);
 
-    // Configurar animaciones
     this.setupScrollAnimations();
   }
 
   private setupScrollAnimations(): void {
-    // Limpiar triggers existentes
     this.scrollTriggers.forEach(st => st.kill());
     this.scrollTriggers = [];
 
-    // Crear nuevas animaciones
     const animations = [
       {
         selector: '#main-background img',
@@ -119,7 +116,6 @@ export class Main implements AfterViewInit, OnDestroy {
       }
     ];
 
-    // Crear animaciones y guardar los triggers
     animations.forEach(anim => {
       const tween = gsap.to(anim.selector, anim.config);
       if (tween.scrollTrigger) {
@@ -128,31 +124,44 @@ export class Main implements AfterViewInit, OnDestroy {
     });
   }
 
-  private refreshAnimations(): void {
-    // Refrescar ScrollTrigger y Lenis
+  private pauseAnimations(): void {
+    // Pausar triggers y Lenis
+    this.scrollTriggers.forEach(st => st.disable());
+    gsap.ticker.remove(this.tickerCallback);
+
+    // Forzar posición de scroll a cero
+    if (this.lenis) {
+      this.lenis.stop();
+      this.lenis.scrollTo(0, { immediate: true });
+    }
+  }
+
+  private resumeAnimations(): void {
+    // Reanudar triggers y Lenis
+    this.scrollTriggers.forEach(st => st.enable());
+    gsap.ticker.add(this.tickerCallback);
+
+    if (this.lenis) {
+      this.lenis.start();
+    }
+  }
+
+  private refreshScroll(): void {
     ScrollTrigger.refresh();
     if (this.lenis) {
       this.lenis.resize();
       this.lenis.scrollTo(0, { immediate: true });
     }
-
-    // Recrear animaciones
-    this.setupScrollAnimations();
   }
 
   private destroyAnimations(): void {
-    // Matar todos los ScrollTriggers
     this.scrollTriggers.forEach(st => st.kill());
     this.scrollTriggers = [];
 
-    // Detener Lenis
     if (this.lenis) {
-      gsap.ticker.remove(this.lenis.raf);
+      gsap.ticker.remove(this.tickerCallback);
       this.lenis.destroy();
       this.lenis = null;
     }
-
-    // Resetear todas las animaciones GSAP
-    gsap.globalTimeline.clear();
   }
 }
