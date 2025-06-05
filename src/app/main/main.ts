@@ -14,6 +14,7 @@ export class Main implements AfterViewInit, OnDestroy {
   private scrollTriggers: ScrollTrigger[] = [];
   private menuSubscription: any;
   private tickerCallback: any;
+  private savedScrollPosition: number = 0;
 
   constructor(public menuService: MenuService) {
     this.tickerCallback = (time: number) => {
@@ -26,10 +27,14 @@ export class Main implements AfterViewInit, OnDestroy {
 
     this.menuSubscription = this.menuService.isMenuVisible$.subscribe(visible => {
       if (visible) {
+        this.saveScrollPosition();
         this.pauseAnimations();
       } else {
         this.resumeAnimations();
-        setTimeout(() => this.refreshScroll(), 100);
+        setTimeout(() => {
+          this.restoreScrollPosition();
+          this.refreshScroll();
+        }, 100);
       }
     });
   }
@@ -47,6 +52,8 @@ export class Main implements AfterViewInit, OnDestroy {
     this.lenis = new Lenis({
       autoRaf: false,
       smoothWheel: true,
+      syncTouch: true,
+      prevent: () => false
     });
 
     this.lenis.on('scroll', ScrollTrigger.update);
@@ -124,20 +131,28 @@ export class Main implements AfterViewInit, OnDestroy {
     });
   }
 
+  private saveScrollPosition(): void {
+    this.savedScrollPosition = this.lenis?.scroll || window.scrollY;
+  }
+
+  private restoreScrollPosition(): void {
+    if (this.lenis) {
+      this.lenis.scrollTo(this.savedScrollPosition, { immediate: true });
+    } else {
+      window.scrollTo(0, this.savedScrollPosition);
+    }
+  }
+
   private pauseAnimations(): void {
-    // Pausar triggers y Lenis
     this.scrollTriggers.forEach(st => st.disable());
     gsap.ticker.remove(this.tickerCallback);
 
-    // Forzar posición de scroll a cero
     if (this.lenis) {
       this.lenis.stop();
-      this.lenis.scrollTo(0, { immediate: true });
     }
   }
 
   private resumeAnimations(): void {
-    // Reanudar triggers y Lenis
     this.scrollTriggers.forEach(st => st.enable());
     gsap.ticker.add(this.tickerCallback);
 
@@ -150,7 +165,6 @@ export class Main implements AfterViewInit, OnDestroy {
     ScrollTrigger.refresh();
     if (this.lenis) {
       this.lenis.resize();
-      this.lenis.scrollTo(0, { immediate: true });
     }
   }
 

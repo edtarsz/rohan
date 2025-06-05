@@ -8,21 +8,11 @@ import { MenuService } from '../menu/menu.service';
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class Header implements OnInit {
+export class Header {
   menuService: MenuService;
 
   constructor(menuService: MenuService) {
     this.menuService = menuService;
-  }
-
-  ngOnInit() {
-    this.menuService.isMenuVisible$.subscribe(visible => {
-      if (visible) {
-        document.body.classList.add('menu-open');
-      } else {
-        document.body.classList.remove('menu-open');
-      }
-    });
   }
 
   toggleMenu() {
