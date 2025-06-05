@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Menu } from "../menu/menu";
 import { MenuService } from '../menu/menu.service';
 
@@ -8,11 +8,21 @@ import { MenuService } from '../menu/menu.service';
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
-export class Header {
+export class Header implements OnInit {
   menuService: MenuService;
 
   constructor(menuService: MenuService) {
     this.menuService = menuService;
+  }
+
+  ngOnInit() {
+    this.menuService.isMenuVisible$.subscribe(visible => {
+      if (visible) {
+        document.body.classList.add('menu-open');
+      } else {
+        document.body.classList.remove('menu-open');
+      }
+    });
   }
 
   toggleMenu() {
