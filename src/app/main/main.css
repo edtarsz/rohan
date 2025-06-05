@@ -216,3 +216,129 @@ main.active {
     object-position: center;
     opacity: 0.5;
 }
+
+.character-container {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    display: flex;
+    height: 300vh;
+    top: 100vh;
+    position: relative;
+    background-color: var(--primary-color);
+}
+
+.character-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 120vh;
+    width: auto;
+    overflow: hidden;
+}
+
+.character-background img {
+    width: 100vw;
+    height: 120vh;
+    object-fit: cover;
+    opacity: 0.5;
+    object-position: center;
+}
+
+.character {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    width: 60vw;
+    padding-top: 5rem;
+    color: white;
+}
+
+
+.character-header {
+    position: sticky;
+    top: 0;
+    height: auto;
+    width: 100%;
+    padding: 9vh 0 6vh 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom,
+            rgba(31, 29, 32, 1),
+            rgba(31, 29, 32, 1),
+            transparent);
+}
+
+.character-title {
+    position: relative;
+    color: white;
+    width: 60vw;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.character-header h1 {
+    position: relative;
+    font-family: var(--main-font);
+    font-size: 5vw;
+    display: flex;
+    z-index: 1;
+}
+
+.character-header img {
+    width: 2vw;
+    z-index: 1;
+}
+
+.description {
+    font-family: var(--din-pro);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    line-height: 1.5;
+}
+
+.description h4 {
+    width: 50%;
+    font-weight: normal;
+    font-size: 2vw;
+    z-index: 1;
+}
+
+.description p {
+    width: 60%;
+    font-size: 1vw;
+    z-index: 1;
+}
+
+.right-img-container {
+    padding-top: 5rem;
+    width: 100%;
+    display: flex;
+}
+
+.right-img-container img {
+    width: 30vw;
+    height: 15vw;
+    object-position: top;
+    object-fit: cover;
+}
+
+.grid-carrusel {
+    position: relative;
+    top: 10vh;
+    gap: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-carrusel img {
+    opacity: 1;
+}
