@@ -1,4 +1,4 @@
-<main>
+<main [class.active]="menuService.isMenuVisible">
     <div class="background" id="main-background">
         <img src="/assets/img/bg-main.svg" draggable="false" alt="" loading="lazy">
     </div>
@@ -70,7 +70,7 @@
                     <img src="/assets/img/tienda.png" draggable="false" alt="" loading="lazy">
                 </div>
             </div>
-            
+
             <div class="row row-3">
                 <div class="border-red">
                     <h3>MORE <br>

@@ -1,3 +1,8 @@
+main.active {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .background {
     position: fixed;
     width: 100%;
