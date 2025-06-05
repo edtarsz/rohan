@@ -14,6 +14,7 @@
     --helvetica-bold: 'HelveticaNeueBold';
     --ubuntu-bold: 'UbuntuBold';
     --ubuntu-regular: 'UbuntuRegular';
+    --din-pro: 'DinPro';
 }
 
 body {
@@ -50,6 +51,12 @@ body {
 @font-face {
     font-family: 'UbuntuRegular';
     src: url('/assets/fonts/Ubuntu-Regular.woff2') format('woff2');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'DinPro';
+    src: url('/assets/fonts/DIN-Next-Slab-Pro.woff2') format('woff2');
     font-weight: normal;
 }
 
