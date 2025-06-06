@@ -3,6 +3,11 @@ main.active {
     overflow: hidden;
 }
 
+/* Got no idea why is overflowing */
+main {
+    overflow: hidden;
+}
+
 .background {
     position: fixed;
     width: 100%;
@@ -109,12 +114,16 @@ main.active {
     top: 100vh;
     background-color: var(--primary-color);
     position: relative;
+
+    overflow: hidden;
 }
 
 .sinopsis img {
     position: absolute;
+    width: 140%;
+    left: -10%;
     top: 0;
-    width: 100%;
+    will-change: transform;
 }
 
 .sinopsis-text {
@@ -136,6 +145,8 @@ main.active {
 }
 
 .container-cards {
+    perspective: 1000px;
+
     flex-direction: column;
     justify-content: top;
     align-items: center;
@@ -200,11 +211,21 @@ main.active {
     border-radius: 0.3rem;
     border: 2px solid var(--secondary-color);
     overflow: hidden;
+    position: relative;
+
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+    will-change: transform, opacity;
+}
+
+
+.border-red.visible {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .border-red:hover {
-    transition: transform 0.2s ease;
     transform: scale(1.02);
+    transition: transform 0.2s ease;
 }
 
 .row-1 img,

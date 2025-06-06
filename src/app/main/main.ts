@@ -62,11 +62,71 @@ export class Main implements AfterViewInit, OnDestroy {
     this.setupScrollAnimations();
   }
 
+
   private setupScrollAnimations(): void {
     this.scrollTriggers.forEach(st => st.kill());
     this.scrollTriggers = [];
 
+    gsap.set('.border-red', { opacity: 0, y: 50 });
+
+    // Solución mejorada para las tarjetas
+    document.querySelectorAll('.row').forEach(row => {
+      const cards = row.querySelectorAll('.border-red');
+
+      // toggleActions: 'play none none reset',
+      // onEnter: play(reproduce la animación)
+      // onLeave: none(no hace nada)
+      // onEnterBack: reverse(revierte la animación)
+      // onLeaveBack: none(no hace nada)
+
+      if (cards.length > 0) {
+        const tween = gsap.fromTo(cards,
+          { y: 50, opacity: 0, scale: 0.95 },
+          {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: row,
+              start: 'top 85%',
+              end: 'bottom 15%',
+              toggleActions: 'play none none reset',
+              // markers: true,
+            }
+          }
+        );
+
+        if (tween.scrollTrigger) {
+          this.scrollTriggers.push(tween.scrollTrigger);
+        }
+      }
+    });
+
+    // Resto de las animaciones permanecen igual
+    const wavesAnimation = {
+      selector: '.sinopsis img',
+      config: {
+        scrollTrigger: {
+          trigger: '.sinopsis',
+          start: 'top bottom',
+          // end: '+=1000 top',
+          end: 'bottom top',
+          toggleActions: 'play none reverse none',
+          scrub: true,
+        },
+        keyframes: [
+          { x: '-20%' },
+          { x: '20%' }
+        ],
+        ease: 'none'
+      }
+    };
+
     const animations = [
+      wavesAnimation,
       {
         selector: '#main-background img',
         config: {
